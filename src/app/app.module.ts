@@ -8,6 +8,8 @@ import { CalculatedVolumeComponent } from './calculated-volume/calculated-volume
 import { NavbarComponent } from './app-navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
+import { EventListComponent } from './event-list/event-list.component';
+import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { AboutComponent } from './about/about.component';
     CalculatedVolumeComponent,
     NavbarComponent,
     FooterComponent,
-    AboutComponent
+    AboutComponent,
+    EventListComponent,
+    EventThumbnailComponent
   ],
   imports: [
     BrowserModule,
