@@ -36,21 +36,21 @@
       <tbody>
       <tr>
         <th class="text-start">Manhã</th>
-        <td>{{manhaSro}} mL</td>
-        <td>{{manhaOutros}} mL</td>
-        <td>Total da manhã: {{manhaTotal}} mL</td>
+        <td>{{manhaSro | number: '1.0-0'}} mL</td>
+        <td>{{manhaOutros | number: '1.0-0'}} mL</td>
+        <td>Total da manhã: {{manhaTotal | number: '1.0-0'}} mL</td>
       </tr>
       <tr>
         <th class="text-start">Tarde</th>
-        <td>{{tardeSro}} mL</td>
-        <td>{{tardeOutros}} mL</td>
-        <td>Total da tarde: {{tardeTotal}} mL</td>
+        <td>{{tardeSro | number: '1.0-0'}} mL</td>
+        <td>{{tardeOutros | number: '1.0-0'}} mL</td>
+        <td>Total da tarde: {{tardeTotal | number: '1.0-0'}} mL</td>
       </tr>
       <tr>
         <th class="text-start">Noite</th>
-        <td>{{noiteSro}} mL</td>
-        <td>{{noiteOutros}} mL</td>
-        <td>Total da noite: {{noiteTotal}} mL</td>
+        <td>{{noiteSro | number: '1.0-0'}} mL</td>
+        <td>{{noiteOutros | number: '1.0-0'}} mL</td>
+        <td>Total da noite: {{noiteTotal | number: '1.0-0'}} mL</td>
       </tr>
       </tbody>
       <tfoot>
@@ -61,11 +61,11 @@
           <i class="bi bi-info-circle-fill" placement="top" ngbTooltip="Total do dia inteiro de SRO"></i>
         </td>
         <td>
-          {{outrosTotal}} mL
+          {{outrosTotal | number: '1.0-0'}} mL
           <i class="bi bi-info-circle-fill" placement="top" ngbTooltip="Total do dia inteiro de Outros Líquidos"></i>
         </td>
         <td>
-          {{sroTotal + outrosTotal}} mL
+          {{sroTotal + outrosTotal | number: '1.0-0'}} mL
           <i class="bi bi-info-circle-fill" placement="top" ngbTooltip="Total do dia inteiro de Soro Oral + Outros líquidos"></i>
         </td>
       </tr>
