@@ -11,7 +11,7 @@ export class PatientDataComponent implements OnInit {
   constructor(private title: Title) { }
 
   ngOnInit(): void {
-    this.title.setTitle("Dados do Paciente");
+    this.title.setTitle("Dados do paciente");
   }
 
 }
