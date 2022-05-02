@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,12 @@ import {AppShellNoRenderDirective} from "./directives/app-shell-no-render.direct
 import {FormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import {CommonModule, registerLocaleData} from '@angular/common';
+import localePT from '@angular/common/locales/pt';
+
+registerLocaleData(localePT, 'pt-BR');
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,11 +36,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
