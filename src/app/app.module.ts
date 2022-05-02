@@ -12,6 +12,7 @@ import { EventListComponent } from './event-list/event-list.component';
 import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.component';
 import {AppShellRenderDirective} from "./directives/app-shell-render.directive";
 import {AppShellNoRenderDirective} from "./directives/app-shell-no-render.directive";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,8 +28,9 @@ import {AppShellNoRenderDirective} from "./directives/app-shell-no-render.direct
     AppShellNoRenderDirective
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    AppRoutingModule
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

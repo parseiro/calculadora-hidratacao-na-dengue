@@ -1,18 +1,25 @@
 <div class="container-lg mx-auto bg-light m-4 border">
   <h1 class="h2 text-center">Insira os dados do paciente</h1>
-  <form class="needs-validation my-4" novalidate>
+  <form class="needs-validation my-4" novalidate
+        autocomplete="off"
+        #loginForm="ngForm"
+        (ngSubmit)="calculateVolume()">
 
     <div class="row align-items-center justify-content-center g-3 mb-3 ms-3">
       <label for="idade" class="col-sm-2 col-form-label">Idade (anos)</label>
       <div class="col-sm-3">
-        <input type="number" min="0" max="120" class="form-control" id="idade" required>
+        <input type="number" min="0" max="120" class="form-control" id="idade"
+               [(ngModel)]="idade" name="idade"
+               required>
       </div>
     </div>
 
     <div class="row align-items-center justify-content-center g-3 mb-3 ms-3">
       <label for="peso" class="col-sm-2 col-form-label">Peso (kg)</label>
       <div class="col-sm-3">
-        <input type="number" min="0" max="250" class="form-control" id="peso" required>
+        <input type="number" min="0" max="250" class="form-control" id="peso"
+               [(ngModel)]="peso" name="peso"
+               required>
       </div>
     </div>
 
