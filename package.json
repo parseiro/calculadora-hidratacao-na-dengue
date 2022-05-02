@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "serve:prerender": "http-server -c-1 dist/calculadora-hidratacao-na-dengue/browser",
     "dev:ssr": "ng run calculadora-hidratacao-na-dengue:serve-ssr",
     "serve:ssr": "node dist/calculadora-hidratacao-na-dengue/server/main.js",
     "build:ssr": "ng build && ng run calculadora-hidratacao-na-dengue:server",
@@ -25,6 +26,7 @@
     "@angular/router": "~13.3.0",
     "@nguniversal/express-engine": "^13.1.0",
     "express": "^4.15.2",
+    "http-server": "^14.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
