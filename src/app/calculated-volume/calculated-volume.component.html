@@ -56,8 +56,8 @@
       <tfoot>
       <tr>
         <th class="text-start">Soma do dia inteiro</th>
-        <td placement="top">
-          {{sroTotal}} mL
+        <td>
+          {{sroTotal | number: '1.0-0'}} mL
           <i class="bi bi-info-circle-fill" placement="top" ngbTooltip="Total do dia inteiro de SRO"></i>
         </td>
         <td>
