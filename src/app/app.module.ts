@@ -23,7 +23,7 @@ import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.compo
     EventThumbnailComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule
   ],
   providers: [],
