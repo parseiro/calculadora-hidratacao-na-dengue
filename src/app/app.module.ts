@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.component';
+import {AppShellRenderDirective} from "./directives/app-shell-render.directive";
+import {AppShellNoRenderDirective} from "./directives/app-shell-no-render.directive";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.compo
     FooterComponent,
     AboutComponent,
     EventListComponent,
-    EventThumbnailComponent
+    EventThumbnailComponent,
+    AppShellRenderDirective,
+    AppShellNoRenderDirective
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

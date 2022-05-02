@@ -1,4 +1,9 @@
-<div class="container">
+<div class="d-flex align-items-center m-5 border border-1" *appShellRender>
+  <strong>Carregando dados...</strong>
+  <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+</div>
+
+<div class="container" *appShellNoRender>
   <div class="row bg-light">
     <app-event-thumbnail
       *ngFor="let event of eventos"
