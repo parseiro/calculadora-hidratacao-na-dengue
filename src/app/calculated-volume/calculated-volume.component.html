@@ -1,1 +1,77 @@
-<p>calculated-volume works!</p>
+<div class="container-lg mx-auto bg-light m-4 border">
+  <h1 class="h2 text-center">Volume calculado</h1>
+
+  <div class="row mx-auto" style="max-width: 500px;">
+    <div class="col-sm-6 py-3">
+      <div class="row align-items-center justify-content-center">
+        <p class="col-auto">Idade: <strong>{{idade}} {{idade == 1 ? 'ano' : 'anos'}}</strong></p>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <p class="col-auto">Peso: <strong>{{peso}} kg</strong></p>
+      </div>
+    </div>
+
+    <div class="col-sm-6 align-self-center justify-content-center mx-auto">
+      <button type="button" class="btn btn-primary ms-3" (click)="backToEditor()">
+        Editar dados
+      </button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table text-center mx-auto table-bordered bg-white">
+      <thead>
+      <th scope="col"></th>
+      <th scope="col">
+        S.R.O.
+        <i class="bi bi-info-circle-fill" placement="top" ngbTooltip="Soro de Reidratação Oral"></i>
+      </th>
+      <th scope="col">
+        Outros líquidos
+        <i class="bi bi-info-circle-fill" placement="top" ngbTooltip="Água, sucos, refrigerantes"></i>
+      </th>
+      <th scope="col">Totais</th>
+      </thead>
+      <tbody>
+      <tr>
+        <th class="text-start">Manhã</th>
+        <td>{{manhaSro | number: '1.0-0'}} mL</td>
+        <td>{{manhaOutros | number: '1.0-0'}} mL</td>
+        <td>Total da manhã: {{manhaTotal | number: '1.0-0'}} mL</td>
+      </tr>
+      <tr>
+        <th class="text-start">Tarde</th>
+        <td>{{tardeSro | number: '1.0-0'}} mL</td>
+        <td>{{tardeOutros | number: '1.0-0'}} mL</td>
+        <td>Total da tarde: {{tardeTotal | number: '1.0-0'}} mL</td>
+      </tr>
+      <tr>
+        <th class="text-start">Noite</th>
+        <td>{{noiteSro | number: '1.0-0'}} mL</td>
+        <td>{{noiteOutros | number: '1.0-0'}} mL</td>
+        <td>Total da noite: {{noiteTotal | number: '1.0-0'}} mL</td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th class="text-start">Soma do dia inteiro</th>
+        <td>
+          {{sroTotal | number: '1.0-0'}} mL
+          <i class="bi bi-info-circle-fill" placement="top" ngbTooltip="Total do dia inteiro de SRO"></i>
+        </td>
+        <td>
+          {{outrosTotal | number: '1.0-0'}} mL
+          <i class="bi bi-info-circle-fill" placement="top" ngbTooltip="Total do dia inteiro de Outros Líquidos"></i>
+        </td>
+        <td>
+          {{sroTotal + outrosTotal | number: '1.0-0'}} mL
+          <i class="bi bi-info-circle-fill" placement="top" ngbTooltip="Total do dia inteiro de Soro Oral + Outros líquidos"></i>
+        </td>
+      </tr>
+      </tfoot>
+
+    </table>
+  </div>
+
+</div>

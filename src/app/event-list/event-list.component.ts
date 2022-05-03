@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-event-list',
@@ -19,10 +20,10 @@ export class EventListComponent implements OnInit {
     }
   ];
 
-  constructor() {
-  }
+  constructor(private title: Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle("Eventos");
   }
 
 }

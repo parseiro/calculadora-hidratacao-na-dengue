@@ -1,5 +1,15 @@
-<div class="container">
-  <div class="row">
-    <app-event-thumbnail *ngFor="let event of eventos" [event]="event"></app-event-thumbnail>
+<div class="d-flex align-items-center m-5 border border-1" *appShellRender>
+  <strong>Carregando dados...</strong>
+  <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+</div>
+
+
+<div class="container-lg mx-auto bg-light m-4 border" *appShellNoRender>
+  <div class="row bg-light">
+    <app-event-thumbnail
+      *ngFor="let event of eventos"
+      [event]="event"
+      class="col-auto mx-auto"
+    ></app-event-thumbnail>
   </div>
 </div>

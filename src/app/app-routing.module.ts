@@ -7,14 +7,16 @@ import {EventListComponent} from "./event-list/event-list.component";
 
 const routes: Routes = [
   { path: 'patientData', component: PatientDataComponent  },
+  { path: 'patientData/idade/:idade/peso/:peso', component: PatientDataComponent},
   { path: 'calculatedVolume', component: CalculatedVolumeComponent},
+  { path: 'calculatedVolume/idade/:idade/peso/:peso', component: CalculatedVolumeComponent},
   { path: 'about', component: AboutComponent},
   { path: 'eventList', component: EventListComponent},
   { path: '', redirectTo: 'patientData', pathMatch: 'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true, initialNavigation: 'enabledBlocking' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

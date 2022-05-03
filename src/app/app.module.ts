@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,16 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.component';
+import {AppShellRenderDirective} from "./directives/app-shell-render.directive";
+import {AppShellNoRenderDirective} from "./directives/app-shell-no-render.directive";
+import {FormsModule} from "@angular/forms";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import {CommonModule, registerLocaleData} from '@angular/common';
+import localePT from '@angular/common/locales/pt';
+
+registerLocaleData(localePT, 'pt-BR');
+
 
 @NgModule({
   declarations: [
@@ -20,13 +30,20 @@ import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.compo
     FooterComponent,
     AboutComponent,
     EventListComponent,
-    EventThumbnailComponent
+    EventThumbnailComponent,
+    AppShellRenderDirective,
+    AppShellNoRenderDirective
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    CommonModule,
+    AppRoutingModule,
+    FormsModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
