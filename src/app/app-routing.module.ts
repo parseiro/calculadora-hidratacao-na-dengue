@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {PatientDataComponent} from "./patient-data/patient-data.component";
-import {CalculatedVolumeComponent} from "./calculated-volume/calculated-volume.component";
-import {AboutComponent} from "./about/about.component";
-import {EventListComponent} from "./event-list/event-list.component";
+import {PatientDataComponent} from "./pages/patient-data/patient-data.component";
+import {CalculatedVolumeComponent} from "./pages/calculated-volume/calculated-volume.component";
+import {AboutComponent} from "./pages/about/about.component";
+import {EventListComponent} from "./pages/event-list/event-list.component";
 
 const routes: Routes = [
   { path: 'patientData', component: PatientDataComponent  },
