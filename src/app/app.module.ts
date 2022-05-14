@@ -30,6 +30,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 
 import {WeightDirective} from "./directives/weight.directive";
+import {OnlyOneErrorPipe} from "./pipes/onlyOneError";
 
 registerLocaleData(localePT, 'pt-BR');
 
@@ -45,6 +46,7 @@ registerLocaleData(localePT, 'pt-BR');
     EventListComponent,
     EventThumbnailComponent,
     WeightDirective,
+    OnlyOneErrorPipe,
     AppShellRenderDirective,
     AppShellNoRenderDirective
   ],

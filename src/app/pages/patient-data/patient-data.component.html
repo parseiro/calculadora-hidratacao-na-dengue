@@ -13,12 +13,12 @@
                #pesoNgModel="ngModel"
                weightValidator
                required>
-        <div [hidden]="pesoNgModel.valid || pesoNgModel.pristine"
+        <div *ngIf="pesoNgModel.errors | onlyOneError:['required', 'invalid'] as error"
              class="alert alert-danger">
-          <div *ngIf="pesoNgModel.errors?.['required']">
+          <div *ngIf="error?.['required']">
             É necessário inserir um peso
           </div>
-          <div *ngIf="pesoNgModel.errors?.['invalid']">
+          <div *ngIf="error?.['invalid']">
             Este peso não é válido
           </div>
         </div>
