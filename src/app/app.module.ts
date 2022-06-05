@@ -18,6 +18,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {CommonModule, registerLocaleData} from '@angular/common';
 import localePT from '@angular/common/locales/pt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatSliderModule} from "@angular/material/slider";
+import {MatSelectModule} from "@angular/material/select";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+
 import {WeightDirective} from "./directives/weight.directive";
 
 registerLocaleData(localePT, 'pt-BR');
@@ -43,7 +54,17 @@ registerLocaleData(localePT, 'pt-BR');
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }
