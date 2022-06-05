@@ -30,6 +30,15 @@ export class PatientDataComponent implements OnInit {
   calculateVolume(): void {
 
     // const {idade, peso} = values;
+    let tipo: HTMLInputElement = <HTMLInputElement> document.getElementById('checkTipo');
+    let comorbidades:HTMLInputElement = <HTMLInputElement> document.getElementById('checkComorbidades');
+
+    //window.alert(`Tipo: ${tipo?.checked}, Comorbidade: ${comorbidades?.checked}`);
+
+    if (tipo?.checked == false || comorbidades?.checked == false) {
+      window.alert('Por favor, marque os checkboxes');
+      return;
+    }
 
     const url = `/calculatedVolume/peso/${this.peso}`;
 

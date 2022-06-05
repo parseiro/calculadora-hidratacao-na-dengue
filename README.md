@@ -14,11 +14,11 @@ https://www.figma.com/file/cC73ESfZ0JD8xyb1ftt8X2/Calculadora-Hidrata%C3%A7%C3%A
 - [x] Mapear componentes à rotas no módulo de rotas.
 - [x] Criar navegação entre páginas por meio de rotas.
 - [x] Passar dados entre componentes que representam diferentes telas via parâmetros de rotas.
-- [ ] Validar campos do formulário com REGEX e apresentar os erros.
+- [x] Validar campos do formulário com REGEX e apresentar os erros.
 - [ ] Desabilitar o botão de submit enquanto o formulário está inválido.
 - [ ] Fazer requisições a API com tratamento da resposta com Promises ou Observables.
 - [ ] Cadastrar uma entidade no JSON Server.
 - [ ] Apresentar uma lista de dados com a diretiva estrutural ngFor.
-- [ ] Usar a diretiva ngIf
+- [x] Usar a diretiva ngIf
 - [x] Formatar a apresentação de dados com Pipes.
 - [ ] Build e deploy da aplicação.

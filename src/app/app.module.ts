@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {CommonModule, registerLocaleData} from '@angular/common';
 import localePT from '@angular/common/locales/pt';
+import {WeightDirective} from "./directives/weight.directive";
 
 registerLocaleData(localePT, 'pt-BR');
 
@@ -31,6 +32,7 @@ registerLocaleData(localePT, 'pt-BR');
     AboutComponent,
     EventListComponent,
     EventThumbnailComponent,
+    WeightDirective,
     AppShellRenderDirective,
     AppShellNoRenderDirective
   ],

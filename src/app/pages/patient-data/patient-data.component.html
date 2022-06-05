@@ -2,17 +2,29 @@
   <h1 class="h2 text-center">Insira os dados do paciente</h1>
   <form class="needs-validation my-4" novalidate
         autocomplete="off"
-        #loginForm="ngForm"
+        #dadosPaciente="ngForm"
         (ngSubmit)="calculateVolume()">
 
     <div class="row align-items-center justify-content-center g-3 mb-3 ms-3">
       <label for="peso" class="col-sm-2 col-form-label">Peso (kg)</label>
       <div class="col-sm-3">
-        <input type="number" min="0" max="250" class="form-control" id="peso"
+        <input type="text" class="form-control" id="peso"
                [(ngModel)]="peso" name="peso"
+               #pesoNgModel="ngModel"
+               weightValidator
                required>
+        <div [hidden]="pesoNgModel.valid || pesoNgModel.pristine"
+             class="alert alert-danger">
+          <div *ngIf="pesoNgModel.errors?.['required']">
+            É necessário inserir um peso
+          </div>
+          <div *ngIf="pesoNgModel.errors?.['invalid']">
+            Este peso não é válido
+          </div>
+        </div>
       </div>
     </div>
+
 
     <div class="row m-4">
       <div class="form-check col-auto mx-auto">
