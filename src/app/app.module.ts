@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PatientDataComponent } from './pages/patient-data/patient-data.component';
-import { CalculatedVolumeComponent } from './pages/calculated-volume/calculated-volume.component';
+import { PatientViewComponent } from './pages/patient-view/patient-view.component';
 import { NavbarComponent } from './components/app-navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -39,7 +39,7 @@ registerLocaleData(localePT, 'pt-BR');
   declarations: [
     AppComponent,
     PatientDataComponent,
-    CalculatedVolumeComponent,
+    PatientViewComponent,
     NavbarComponent,
     FooterComponent,
     AboutComponent,

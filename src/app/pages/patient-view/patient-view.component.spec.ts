@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalculatedVolumeComponent } from './calculated-volume.component';
+import { PatientViewComponent } from './patient-view.component';
 
-describe('CalculatedVolumeComponent', () => {
-  let component: CalculatedVolumeComponent;
-  let fixture: ComponentFixture<CalculatedVolumeComponent>;
+describe('PatientViewComponent', () => {
+  let component: PatientViewComponent;
+  let fixture: ComponentFixture<PatientViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalculatedVolumeComponent ]
+      declarations: [ PatientViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CalculatedVolumeComponent);
+    fixture = TestBed.createComponent(PatientViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,10 +4,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-calculated-volume',
-  templateUrl: './calculated-volume.component.html',
-  styleUrls: ['./calculated-volume.component.scss']
+  templateUrl: './patient-view.component.html',
+  styleUrls: ['./patient-view.component.scss']
 })
-export class CalculatedVolumeComponent implements OnInit {
+export class PatientViewComponent implements OnInit {
 
   idade: number = 0;
   peso: number = 0;
