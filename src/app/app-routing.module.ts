@@ -4,6 +4,7 @@ import {PatientEditComponent} from "./pages/patient-edit/patient-edit.component"
 import {PatientViewComponent} from "./pages/patient-view/patient-view.component";
 import {AboutComponent} from "./pages/about/about.component";
 import {EventListComponent} from "./pages/event-list/event-list.component";
+import {PatientListComponent} from "./pages/patient-list/patient-list.component";
 
 const routes: Routes = [
   { path: 'patientEdit', component: PatientEditComponent  },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'patientView/peso/:peso', component: PatientViewComponent},
   { path: 'about', component: AboutComponent},
   { path: 'eventList', component: EventListComponent},
-  { path: '', redirectTo: 'patientEdit', pathMatch: 'full'}
+  { path: 'patientList', component: PatientListComponent},
+  { path: '', redirectTo: 'patientList', pathMatch: 'full'}
 ];
 
 @NgModule({
