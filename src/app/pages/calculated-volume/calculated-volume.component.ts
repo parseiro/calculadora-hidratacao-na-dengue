@@ -48,7 +48,7 @@ export class CalculatedVolumeComponent implements OnInit {
   }
 
   backToEditor() {
-    const url = `/patientData/idade/${this.idade}/peso/${this.peso}`;
+    const url = `/patientData/peso/${this.peso}`;
 
     // console.log('Indo para: ' + url);
 

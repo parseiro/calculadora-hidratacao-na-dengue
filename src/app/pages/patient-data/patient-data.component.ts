@@ -9,7 +9,6 @@ import {Title} from "@angular/platform-browser";
   styleUrls: ['./patient-data.component.scss']
 })
 export class PatientDataComponent implements OnInit {
-  idade: number = 0;
   peso: number = 0;
 
   constructor(private title: Title,
@@ -18,8 +17,6 @@ export class PatientDataComponent implements OnInit {
 
     this.route.paramMap.subscribe(
       params => {
-        // @ts-ignore
-        this.idade = +params.get('idade');
         // @ts-ignore
         this.peso = +params?.get('peso');
         // console.log(`idade: ${idade}, peso: ${peso}`);
@@ -34,7 +31,7 @@ export class PatientDataComponent implements OnInit {
 
     // const {idade, peso} = values;
 
-    const url = `/calculatedVolume/idade/${this.idade}/peso/${this.peso}`;
+    const url = `/calculatedVolume/peso/${this.peso}`;
 
     // console.log('Indo para: ' + url);
 
