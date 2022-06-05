@@ -40,7 +40,7 @@ export class PatientEditComponent implements OnInit {
       return;
     }
 
-    const url = `/calculatedVolume/peso/${this.peso}`;
+    const url = `/patientView/peso/${this.peso}`;
 
     // console.log('Indo para: ' + url);
 

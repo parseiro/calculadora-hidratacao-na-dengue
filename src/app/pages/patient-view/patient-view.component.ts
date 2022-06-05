@@ -44,7 +44,7 @@ export class PatientViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.title.setTitle("Volume calculado");
+    this.title.setTitle("Ver paciente");
   }
 
   backToEditor() {
