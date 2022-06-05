@@ -5,10 +5,10 @@ import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-patient-data',
-  templateUrl: './patient-data.component.html',
-  styleUrls: ['./patient-data.component.scss']
+  templateUrl: './patient-edit.component.html',
+  styleUrls: ['./patient-edit.component.scss']
 })
-export class PatientDataComponent implements OnInit {
+export class PatientEditComponent implements OnInit {
   peso: number = 0;
 
   constructor(private title: Title,

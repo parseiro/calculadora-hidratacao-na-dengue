@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PatientDataComponent } from './pages/patient-data/patient-data.component';
+import { PatientEditComponent } from './pages/patient-edit/patient-edit.component';
 import { PatientViewComponent } from './pages/patient-view/patient-view.component';
 import { NavbarComponent } from './components/app-navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -38,7 +38,7 @@ registerLocaleData(localePT, 'pt-BR');
 @NgModule({
   declarations: [
     AppComponent,
-    PatientDataComponent,
+    PatientEditComponent,
     PatientViewComponent,
     NavbarComponent,
     FooterComponent,

@@ -48,7 +48,7 @@ export class PatientViewComponent implements OnInit {
   }
 
   backToEditor() {
-    const url = `/patientData/peso/${this.peso}`;
+    const url = `/patientEdit/peso/${this.peso}`;
 
     // console.log('Indo para: ' + url);
 
