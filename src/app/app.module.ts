@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {CommonModule, registerLocaleData} from '@angular/common';
 import localePT from '@angular/common/locales/pt';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {WeightDirective} from "./directives/weight.directive";
 
 registerLocaleData(localePT, 'pt-BR');
@@ -41,7 +42,8 @@ registerLocaleData(localePT, 'pt-BR');
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }
