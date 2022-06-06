@@ -18,7 +18,7 @@ https://www.figma.com/file/cC73ESfZ0JD8xyb1ftt8X2/Calculadora-Hidrata%C3%A7%C3%A
 - [x] Desabilitar o botão de submit enquanto o formulário está inválido.
 - [ ] Fazer requisições a API com tratamento da resposta com Promises ou Observables.
 - [ ] Cadastrar uma entidade no JSON Server.
-- [ ] Apresentar uma lista de dados com a diretiva estrutural ngFor.
+- [x] Apresentar uma lista de dados com a diretiva estrutural ngFor.
 - [x] Usar a diretiva ngIf
 - [x] Formatar a apresentação de dados com Pipes.
 - [ ] Build e deploy da aplicação.
