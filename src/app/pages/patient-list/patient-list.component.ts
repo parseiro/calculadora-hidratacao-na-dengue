@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
 import {IPatient} from "../../model/patient";
 import {PatientService} from "../../services/patient.service";
 import {MatSort} from "@angular/material/sort";
@@ -8,7 +8,8 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.component.html',
-  styleUrls: ['./patient-list.component.scss']
+  styleUrls: ['./patient-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PatientListComponent implements OnInit, AfterViewInit {
   public patients$?: Observable<IPatient[]>;
