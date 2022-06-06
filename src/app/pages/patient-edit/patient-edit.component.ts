@@ -66,7 +66,7 @@ export class PatientEditComponent implements OnInit {
       this.activePatient.weight = this.peso;
       this.patientService.save(this.activePatient);
 
-      const url = `/patientView/${this.activePatient.id}`;
+      const url = `/patientList`;
 
       // console.log('Indo para: ' + url);
 
