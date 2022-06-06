@@ -1,0 +1,80 @@
+<div class="container-lg mx-auto bg-light m-4 border">
+  <h1 class="h2 text-center">Insira os dados do paciente</h1>
+  <form class="needs-validation my-4" novalidate
+        autocomplete="off"
+        #dadosPaciente="ngForm"
+  >
+
+    <div class="row align-items-center justify-content-center g-3 mb-3 ms-3">
+      <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="nome"
+               [(ngModel)]="nome" name="nome"
+               #nomeNgModel="ngModel"
+               required>
+        <div *ngIf="nomeNgModel.errors | onlyOneError:['required', 'invalid'] as error"
+             class="alert alert-danger">
+          <div *ngIf="error?.['required']">
+            Nome é necessário
+          </div>
+          <div *ngIf="error?.['invalid']">
+            Este nome é inválido
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center g-3 mb-3 ms-3">
+      <label for="peso" class="col-sm-2 col-form-label">Peso (kg)</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="peso"
+               [(ngModel)]="peso" name="peso"
+               #pesoNgModel="ngModel"
+               weightValidator
+               required>
+        <div *ngIf="pesoNgModel.errors | onlyOneError:['required', 'invalid'] as error"
+             class="alert alert-danger">
+          <div *ngIf="error?.['required']">
+            É necessário inserir um peso
+          </div>
+          <div *ngIf="error?.['invalid']">
+            Este peso não é válido
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row m-4">
+      <div class="form-check col-auto mx-auto">
+        <input type="checkbox" class="form-check-input" checked id="checkTipo">
+        <label class="form-check-label" for="checkTipo" style="max-width: 400px;">
+          O paciente foi classificado com dengue tipo A ou B (não é tipo C nem D)
+        </label>
+      </div>
+
+    </div>
+
+    <div class="row m-4">
+      <div class="form-check col-auto mx-auto">
+        <input type="checkbox" class="form-check-input" checked id="checkComorbidades">
+        <label class="form-check-label" for="checkComorbidades" style="max-width: 400px;">
+          O paciente não tem comorbidades que necessitem de cautela no volume de líquidos (ex.: cardiopatias, doença
+          renal crônica)
+        </label>
+      </div>
+    </div>
+
+    <div class="row mb-3 justify-content-center">
+      <div class="col-auto">
+        <button class="btn btn-primary"
+                [disabled]="!dadosPaciente.form.valid"
+                (click)="savePatient()"
+        >Calcular Volume
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+</div>

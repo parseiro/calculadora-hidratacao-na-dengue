@@ -1,0 +1,60 @@
+<div class="d-flex align-items-center m-5 border border-1" *appShellRender>
+  <strong>Carregando pacientes...</strong>
+  <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+</div>
+
+
+<div class="container-lg mx-auto bg-light m-4 border" *appShellNoRender>
+  <div class="row bg-light">
+    <table mat-table
+           matSort matSortDisableClear matSortActive="id" matSortDirection="asc"
+           [dataSource]="patients"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let patient">{{patient.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let patient">{{patient.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef>Peso (kg)</th>
+        <td mat-cell *matCellDef="let patient">{{patient.weight}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+
+        <td mat-cell *matCellDef="let patient">
+
+          <button
+            mat-mini-fab
+            matTooltip="Abrir"
+            (click)="ver(patient.id)">
+            <mat-icon>pageview</mat-icon>
+          </button>
+
+          <button
+            mat-mini-fab
+            matTooltip="Editar"
+            (click)="editar(patient.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button
+            mat-mini-fab
+            matTooltip="Excluir"
+            (click)="deletar(patient.id)">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let patient; columns:displayedColumns"></tr>
+    </table>
+  </div>
+</div>

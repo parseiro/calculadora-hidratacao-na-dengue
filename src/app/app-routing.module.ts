@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {PatientDataComponent} from "./patient-data/patient-data.component";
-import {CalculatedVolumeComponent} from "./calculated-volume/calculated-volume.component";
-import {AboutComponent} from "./about/about.component";
-import {EventListComponent} from "./event-list/event-list.component";
+import {PatientEditComponent} from "./pages/patient-edit/patient-edit.component";
+import {PatientViewComponent} from "./pages/patient-view/patient-view.component";
+import {AboutComponent} from "./pages/about/about.component";
+import {EventListComponent} from "./pages/event-list/event-list.component";
+import {PatientListComponent} from "./pages/patient-list/patient-list.component";
 
 const routes: Routes = [
-  { path: 'patientData', component: PatientDataComponent  },
-  { path: 'patientData/idade/:idade/peso/:peso', component: PatientDataComponent},
-  { path: 'calculatedVolume', component: CalculatedVolumeComponent},
-  { path: 'calculatedVolume/idade/:idade/peso/:peso', component: CalculatedVolumeComponent},
+  { path: 'patientEdit', component: PatientEditComponent  },
+  { path: 'patientEdit/:id', component: PatientEditComponent},
+  { path: 'patientView', component: PatientViewComponent},
+  { path: 'patientView/:id', component: PatientViewComponent},
   { path: 'about', component: AboutComponent},
   { path: 'eventList', component: EventListComponent},
-  { path: '', redirectTo: 'patientData', pathMatch: 'full'}
+  { path: 'patientList', component: PatientListComponent},
+  { path: '', redirectTo: 'patientList', pathMatch: 'full'}
 ];
 
 @NgModule({
