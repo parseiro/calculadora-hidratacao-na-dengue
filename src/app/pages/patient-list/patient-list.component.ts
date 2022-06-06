@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {IPatient} from "../../model/patient";
 import {PatientService} from "../../services/patient.service";
 import {Observable, tap} from "rxjs";
@@ -10,12 +10,9 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   templateUrl: './patient-list.component.html',
   styleUrls: ['./patient-list.component.scss']
 })
-export class PatientListComponent implements OnInit, AfterViewInit {
+export class PatientListComponent implements OnInit {
   public patients$?: Observable<IPatient[]>;
   public displayedColumns = ['id', 'name', 'weight', 'actions'];
-
-  @ViewChild(MatSort)
-  sort!: MatSort;
 
   constructor(
     private patientService: PatientService,
@@ -27,18 +24,8 @@ export class PatientListComponent implements OnInit, AfterViewInit {
     this.loadPatients();
   }
 
-  ngAfterViewInit(): void {
-    this.sort.sortChange
-      .pipe(
-        tap(() => this.loadPatients())
-      )
-      .subscribe();
-  }
-
   private loadPatients() {
     this.patients$ = this.patientService.getPatients(
-      this.sort?.direction ?? 'asc',
-      this.sort?.active ?? 'id'
       );
   }
 
