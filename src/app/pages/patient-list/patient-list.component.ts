@@ -2,8 +2,8 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {IPatient} from "../../model/patient";
 import {PatientService} from "../../services/patient.service";
 import {MatSort} from "@angular/material/sort";
-import {tap} from "rxjs";
-import {Router, RouterLink} from "@angular/router";
+import {Observable, tap} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-patient-list',
@@ -11,7 +11,7 @@ import {Router, RouterLink} from "@angular/router";
   styleUrls: ['./patient-list.component.scss']
 })
 export class PatientListComponent implements OnInit, AfterViewInit {
-  public patients: Array<IPatient> =[];
+  public patients$?: Observable<IPatient[]>;
   public displayedColumns = ['id', 'name', 'weight', 'actions'];
 
   @ViewChild(MatSort)
@@ -23,8 +23,7 @@ export class PatientListComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    let patients: Array<IPatient> = this.patientService.getPatients();
-    this.patients = patients;
+    this.loadPatients();
   }
 
   ngAfterViewInit(): void {
@@ -36,7 +35,7 @@ export class PatientListComponent implements OnInit, AfterViewInit {
   }
 
   private loadPatients() {
-    this.patients = this.patientService.getPatients(
+    this.patients$ = this.patientService.getPatients(
       this.sort?.direction ?? 'asc',
       this.sort?.active ?? 'id'
       );

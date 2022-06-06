@@ -37,9 +37,24 @@ export class PatientEditComponent implements OnInit {
           this.peso = 0;
 
         } else {
-          this.activePatient = this.patientService.getPatientById(id);
-          this.nome = this.activePatient.name;
-          this.peso = this.activePatient.weight;
+          this.patientService.getPatientById(id)
+            .subscribe({
+              next: patient => {
+                this.activePatient = patient;
+                this.nome = patient.name;
+                this.peso = patient.weight;
+              },
+              error: err => {
+                this.activePatient = {
+                  id: 0,
+                  name: '',
+                  weight: 0
+                };
+                this.nome = '';
+                this.peso = 0;
+              }
+            });
+
         }
         // console.log(`idade: ${idade}, peso: ${peso}`);
       });

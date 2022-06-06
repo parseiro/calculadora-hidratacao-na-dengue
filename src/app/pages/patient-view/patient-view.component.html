@@ -3,9 +3,9 @@
   <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
 </div>
 
-<div *ngIf="activePatient">
+<div *ngIf="patient$ | async as activePatient">
   <div class="container-lg mx-auto bg-light m-4 border" *appShellNoRender>
-    <h1 class="h2 text-center">Prescrição de Hidratação para Dengue</h1>
+    <h1 class="h2 text-center">Paciente</h1>
 
     <div class="row mx-auto" style="max-width: 500px;">
       <div class="col-sm-6 py-3">
