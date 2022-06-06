@@ -1,15 +1,14 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
 import {IPatient} from "../../model/patient";
 import {PatientService} from "../../services/patient.service";
-import {MatSort} from "@angular/material/sort";
 import {Observable, tap} from "rxjs";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.component.html',
-  styleUrls: ['./patient-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./patient-list.component.scss']
 })
 export class PatientListComponent implements OnInit, AfterViewInit {
   public patients$?: Observable<IPatient[]>;
@@ -21,6 +20,7 @@ export class PatientListComponent implements OnInit, AfterViewInit {
   constructor(
     private patientService: PatientService,
     private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -57,7 +57,16 @@ export class PatientListComponent implements OnInit, AfterViewInit {
   }
 
   public deletar(id: number): void {
-    this.patientService.deleteById(id);
+    this.patientService.deleteById(id).subscribe({
+        next: value => {
+          this.snackBar.open(`Paciente excluído: id ${id}`, '', {duration: 2000});
+          this.loadPatients();
+        },
+        error: (err) => {
+          this.snackBar.open(`Erro: ${err.status} ${err.statusText}`, '', {duration: 5000});
+          console.log(err);
+        }
+      });
     this.loadPatients();
   }
 }

@@ -4,6 +4,7 @@ import {NgForm} from "@angular/forms";
 import {Title} from "@angular/platform-browser";
 import {IPatient} from "../../model/patient";
 import {PatientService} from "../../services/patient.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-patient-data',
@@ -18,6 +19,7 @@ export class PatientEditComponent implements OnInit {
   constructor(private title: Title,
               private router: Router,
               private patientService: PatientService,
+              private snackBar: MatSnackBar,
               private route: ActivatedRoute) {
 
     this.route.paramMap.subscribe(
@@ -66,8 +68,8 @@ export class PatientEditComponent implements OnInit {
 
   public savePatient(): void {
     // const {idade, peso} = values;
-    let tipo: HTMLInputElement = <HTMLInputElement> document.getElementById('checkTipo');
-    let comorbidades:HTMLInputElement = <HTMLInputElement> document.getElementById('checkComorbidades');
+    let tipo: HTMLInputElement = <HTMLInputElement>document.getElementById('checkTipo');
+    let comorbidades: HTMLInputElement = <HTMLInputElement>document.getElementById('checkComorbidades');
 
     //window.alert(`Tipo: ${tipo?.checked}, Comorbidade: ${comorbidades?.checked}`);
 
@@ -79,13 +81,20 @@ export class PatientEditComponent implements OnInit {
     if (this.activePatient) {
       this.activePatient.name = this.nome;
       this.activePatient.weight = this.peso;
-      this.patientService.save(this.activePatient);
+      this.patientService.save(this.activePatient)
+        .subscribe({
+            next: savedPatient => {
+              this.snackBar.open(`Paciente criado ou editado: id ${savedPatient.id}`, '', {duration: 1000});
 
-      const url = `/patientList`;
+              const url = `/patientList`;
 
-      // console.log('Indo para: ' + url);
+              // console.log('Indo para: ' + url);
 
-      this.router.navigate([url]);
+              this.router.navigate([url]);
+            },
+            error: err => console.log(err)
+          }
+        );
     }
   }
 

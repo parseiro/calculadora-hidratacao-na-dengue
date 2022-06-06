@@ -2,6 +2,10 @@
 
 https://www.figma.com/file/cC73ESfZ0JD8xyb1ftt8X2/Calculadora-Hidrata%C3%A7%C3%A3o-Dengue?node-id=0%3A1
 
+# Como rodar o json-server
+
+`json-server.cmd --watch .\mock-api\data.json`
+
 # Checklist
 
 - [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
