@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {Title} from "@angular/platform-browser";
+import {IPatient} from "../../model/patient";
+import {PatientService} from "../../services/patient.service";
 
 @Component({
   selector: 'app-patient-data',
@@ -9,16 +11,36 @@ import {Title} from "@angular/platform-browser";
   styleUrls: ['./patient-edit.component.scss']
 })
 export class PatientEditComponent implements OnInit {
-  peso: number = 0;
+  private activePatient: IPatient | undefined;
+  public nome: string = '';
+  public peso: number = 0;
 
   constructor(private title: Title,
               private router: Router,
+              private patientService: PatientService,
               private route: ActivatedRoute) {
 
     this.route.paramMap.subscribe(
       params => {
         // @ts-ignore
-        this.peso = +params?.get('peso');
+        const id: number | undefined = +params?.get('id');
+
+        // console.log(`Editando paciente com id ${id}`);
+
+        if (id === 0) {
+          this.activePatient = {
+            id: 0,
+            name: '',
+            weight: 0
+          };
+          this.nome = '';
+          this.peso = 0;
+
+        } else {
+          this.activePatient = this.patientService.getPatientById(id);
+          this.nome = this.activePatient.name;
+          this.peso = this.activePatient.weight;
+        }
         // console.log(`idade: ${idade}, peso: ${peso}`);
       });
   }
@@ -27,8 +49,7 @@ export class PatientEditComponent implements OnInit {
     this.title.setTitle('Dados do paciente');
   }
 
-  calculateVolume(): void {
-
+  public savePatient(): void {
     // const {idade, peso} = values;
     let tipo: HTMLInputElement = <HTMLInputElement> document.getElementById('checkTipo');
     let comorbidades:HTMLInputElement = <HTMLInputElement> document.getElementById('checkComorbidades');
@@ -40,11 +61,17 @@ export class PatientEditComponent implements OnInit {
       return;
     }
 
-    const url = `/patientView/peso/${this.peso}`;
+    if (this.activePatient) {
+      this.activePatient.name = this.nome;
+      this.activePatient.weight = this.peso;
+      this.patientService.save(this.activePatient);
 
-    // console.log('Indo para: ' + url);
+      const url = `/patientView/${this.activePatient.id}`;
 
-    this.router.navigate([url]);
+      // console.log('Indo para: ' + url);
+
+      this.router.navigate([url]);
+    }
   }
 
 }

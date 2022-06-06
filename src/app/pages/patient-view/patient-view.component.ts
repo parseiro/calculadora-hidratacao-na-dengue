@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
+import {IPatient} from "../../model/patient";
+import {PatientService} from "../../services/patient.service";
 
 @Component({
   selector: 'app-calculated-volume',
@@ -9,8 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class PatientViewComponent implements OnInit {
 
-  idade: number = 0;
-  peso: number = 0;
+  public activePatient: IPatient | undefined;
 
   manhaTotal: number = 0;
   manhaSro: number = 0;
@@ -29,17 +30,16 @@ export class PatientViewComponent implements OnInit {
 
   constructor(private title: Title,
               private router: Router,
+              private patientService: PatientService,
               private route: ActivatedRoute) {
 
     this.route.paramMap.subscribe(
       params => {
         // @ts-ignore
-        this.idade = +params.get('idade');
-        // @ts-ignore
-        this.peso = +params?.get('peso');
-        // console.log(`idade: ${idade}, peso: ${peso}`);
+        const id = +params.get('id');
 
-        this.calcularHidratacao();
+        this.activePatient = this.patientService.getPatientById(id);
+        this.calcularHidratacao(this.activePatient.weight);
       });
   }
 
@@ -48,15 +48,17 @@ export class PatientViewComponent implements OnInit {
   }
 
   backToEditor() {
-    const url = `/patientEdit/peso/${this.peso}`;
+    if (this.activePatient) {
+      const url = `/patientEdit/${this.activePatient.id}`;
 
-    // console.log('Indo para: ' + url);
+      // console.log('Indo para: ' + url);
 
-    this.router.navigate([url]);
+      this.router.navigate([url]);
+    }
   }
 
-  calcularHidratacao() {
-    const total: number = 60 * this.peso;
+  calcularHidratacao(peso: number) {
+    const total: number = 60 * peso;
 
     this.manhaTotal = total * 0.5;
     this.manhaSro = 1 / 3 * this.manhaTotal;

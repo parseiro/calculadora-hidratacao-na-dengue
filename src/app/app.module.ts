@@ -31,6 +31,12 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 
 import {WeightDirective} from "./directives/weight.directive";
 import {OnlyOneErrorPipe} from "./pipes/onlyOneError";
+import {PatientListComponent} from "./pages/patient-list/patient-list.component";
+import {MatTableModule} from "@angular/material/table";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSortModule} from "@angular/material/sort";
+import {MatIconModule} from "@angular/material/icon";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 registerLocaleData(localePT, 'pt-BR');
 
@@ -47,6 +53,7 @@ registerLocaleData(localePT, 'pt-BR');
     EventThumbnailComponent,
     WeightDirective,
     OnlyOneErrorPipe,
+    PatientListComponent,
     AppShellRenderDirective,
     AppShellNoRenderDirective
   ],
@@ -65,8 +72,13 @@ registerLocaleData(localePT, 'pt-BR');
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
+    MatSnackBarModule,
     MatSliderModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTableModule,
+    MatSortModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }

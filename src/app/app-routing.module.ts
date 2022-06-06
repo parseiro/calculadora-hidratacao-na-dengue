@@ -8,9 +8,9 @@ import {PatientListComponent} from "./pages/patient-list/patient-list.component"
 
 const routes: Routes = [
   { path: 'patientEdit', component: PatientEditComponent  },
-  { path: 'patientEdit/peso/:peso', component: PatientEditComponent},
+  { path: 'patientEdit/:id', component: PatientEditComponent},
   { path: 'patientView', component: PatientViewComponent},
-  { path: 'patientView/peso/:peso', component: PatientViewComponent},
+  { path: 'patientView/:id', component: PatientViewComponent},
   { path: 'about', component: AboutComponent},
   { path: 'eventList', component: EventListComponent},
   { path: 'patientList', component: PatientListComponent},

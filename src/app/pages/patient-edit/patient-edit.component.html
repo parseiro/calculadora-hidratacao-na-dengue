@@ -3,7 +3,26 @@
   <form class="needs-validation my-4" novalidate
         autocomplete="off"
         #dadosPaciente="ngForm"
-        (ngSubmit)="calculateVolume()">
+  >
+
+    <div class="row align-items-center justify-content-center g-3 mb-3 ms-3">
+      <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="nome"
+               [(ngModel)]="nome" name="nome"
+               #nomeNgModel="ngModel"
+               required>
+        <div *ngIf="nomeNgModel.errors | onlyOneError:['required', 'invalid'] as error"
+             class="alert alert-danger">
+          <div *ngIf="error?.['required']">
+            Nome é necessário
+          </div>
+          <div *ngIf="error?.['invalid']">
+            Este nome é inválido
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="row align-items-center justify-content-center g-3 mb-3 ms-3">
       <label for="peso" class="col-sm-2 col-form-label">Peso (kg)</label>
@@ -50,7 +69,9 @@
       <div class="col-auto">
         <button class="btn btn-primary"
                 [disabled]="!dadosPaciente.form.valid"
-        >Calcular Volume</button>
+                (click)="savePatient()"
+        >Calcular Volume
+        </button>
       </div>
     </div>
 
