@@ -36,6 +36,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatSortModule} from "@angular/material/sort";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {HttpClientModule} from "@angular/common/http";
 
 registerLocaleData(localePT, 'pt-BR');
 
@@ -61,6 +62,7 @@ registerLocaleData(localePT, 'pt-BR');
     CommonModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatButtonModule,

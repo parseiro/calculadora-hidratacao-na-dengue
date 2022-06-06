@@ -3,7 +3,7 @@
   <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
 </div>
 
-<div *ngIf="activePatient">
+<div *ngIf="patient$ | async as activePatient">
   <div class="container-lg mx-auto bg-light m-4 border" *appShellNoRender>
     <h1 class="h2 text-center">Paciente</h1>
 
@@ -15,8 +15,8 @@
       </div>
 
       <div class="col-sm-6 align-self-center justify-content-center mx-auto">
-        <button type="button" class="btn btn-primary ms-3" (click)="backToEditor()">
-          Editar dados
+        <button type="button" class="btn btn-primary ms-3" (click)="backToEditor(activePatient.id)">
+          Editar paciente
         </button>
       </div>
     </div>

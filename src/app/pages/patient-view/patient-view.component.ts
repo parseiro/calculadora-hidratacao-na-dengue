@@ -3,6 +3,7 @@ import {Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {IPatient} from "../../model/patient";
 import {PatientService} from "../../services/patient.service";
+import {Observable, tap} from "rxjs";
 
 @Component({
   selector: 'app-calculated-volume',
@@ -11,7 +12,7 @@ import {PatientService} from "../../services/patient.service";
 })
 export class PatientViewComponent implements OnInit {
 
-  public activePatient: IPatient | undefined;
+  public patient$?: Observable<IPatient>;
 
   manhaTotal: number = 0;
   manhaSro: number = 0;
@@ -38,23 +39,25 @@ export class PatientViewComponent implements OnInit {
         // @ts-ignore
         const id = +params.get('id');
 
-        this.activePatient = this.patientService.getPatientById(id);
-        this.calcularHidratacao(this.activePatient.weight);
+        this.patient$ = this.patientService.getPatientById(id)
+          .pipe(
+            tap(value => this.calcularHidratacao(value.weight))
+          );
+        //this.calcularHidratacao(patient.weight);
       });
+
   }
 
   ngOnInit(): void {
     this.title.setTitle("Ver paciente");
   }
 
-  backToEditor() {
-    if (this.activePatient) {
-      const url = `/patientEdit/${this.activePatient.id}`;
+  backToEditor(id: number) {
+    const url = `/patientEdit/${id}`;
 
-      // console.log('Indo para: ' + url);
+    // console.log('Indo para: ' + url);
 
-      this.router.navigate([url]);
-    }
+    this.router.navigate([url]);
   }
 
   calcularHidratacao(peso: number) {
@@ -65,11 +68,11 @@ export class PatientViewComponent implements OnInit {
     this.manhaOutros = this.manhaTotal - this.manhaSro;
 
     this.tardeTotal = total * 0.35;
-    this.tardeSro = 1/3 * this.tardeTotal;
+    this.tardeSro = 1 / 3 * this.tardeTotal;
     this.tardeOutros = this.tardeTotal - this.tardeSro;
 
     this.noiteTotal = total * 0.15;
-    this.noiteSro = 1/3 * this.noiteTotal;
+    this.noiteSro = 1 / 3 * this.noiteTotal;
     this.noiteOutros = this.noiteTotal - this.noiteSro;
 
     this.sroTotal = this.manhaSro + this.tardeSro + this.noiteSro;
