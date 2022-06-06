@@ -13,7 +13,6 @@ import { EventThumbnailComponent } from './components/event-thumbnail/event-thum
 import {AppShellRenderDirective} from "./directives/app-shell-render.directive";
 import {AppShellNoRenderDirective} from "./directives/app-shell-no-render.directive";
 import {FormsModule} from "@angular/forms";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {CommonModule, registerLocaleData} from '@angular/common';
 import localePT from '@angular/common/locales/pt';
@@ -62,7 +61,6 @@ registerLocaleData(localePT, 'pt-BR');
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatButtonModule,
