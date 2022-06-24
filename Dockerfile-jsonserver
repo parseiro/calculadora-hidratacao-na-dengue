@@ -1,0 +1,5 @@
+FROM node:16
+WORKDIR /mock-api
+COPY mock-api/. .
+RUN npm install -g json-server
+ENTRYPOINT ["json-server", "--watch", "--host", "0.0.0.0", "/mock-api/data.json"]

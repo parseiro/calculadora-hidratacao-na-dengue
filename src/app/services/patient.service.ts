@@ -10,7 +10,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class PatientService {
 
-  PATIENTS_URL = 'http://localhost:3000/pacientes';
+
+  PATIENTS_URL = `http://${window.location.hostname}:3000/pacientes`;
 
   constructor(
     private router: Router,

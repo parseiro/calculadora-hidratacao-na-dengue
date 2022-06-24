@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  frontend:
+    image: dengue_image
+    build:
+      dockerfile: Dockerfile-dengue
+#    environment:
+      # actually this hostname is hardcoded inside angular code (patient.service.ts)
+      #- HOST_JSON_SERVER=json-server
+    ports:
+      - 8080:80
+    restart: always
+    depends_on:
+      - json-server
+
+  json-server:
+      image: json_server
+      build:
+        dockerfile: Dockerfile-jsonserver
+      restart: always
+      ports:
+        - 3000:3000
