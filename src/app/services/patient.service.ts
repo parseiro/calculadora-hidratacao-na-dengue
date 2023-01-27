@@ -42,39 +42,34 @@ export class PatientService {
   }
 
   public save(activePatient: IPatient): Observable<IPatient> {
-    this.getPatients()
-      .subscribe({
-        next: (patients) => {
-          if (activePatient.id === 0) { // new patient
-            if (patients.length === 0) {
-              activePatient.id = 1;
-            } else {
-              activePatient.id = patients[0].id + 1;
-            }
-            patients.push(activePatient);
-          } else { // edit existing patient
-            patients.filter(value => value.id === activePatient.id)
-              .forEach((value) => {
-                value.name = activePatient.name;
-                value.weight = activePatient.weight;
-              });
+    return this.getPatients().pipe(
+      map((patients) => {
+        if (activePatient.id === 0) { // new patient
+          if (patients.length === 0) {
+            activePatient.id = 1;
+          } else {
+            activePatient.id = patients[0].id + 1;
           }
-
-          localStorage.setItem('patients', JSON.stringify(patients));
+          patients.push(activePatient);
+        } else { // edit existing patient
+          patients.filter(value => value.id === activePatient.id)
+            .forEach((value) => {
+              value.name = activePatient.name;
+              value.weight = activePatient.weight;
+            });
         }
-      });
-    return of(activePatient);
+
+        localStorage.setItem('patients', JSON.stringify(patients));
+        return activePatient;
+      }));
   }
 
   public deleteById(id: number): Observable<void> {
-    this.getPatients()
-      .subscribe({
-        next: (patients) => {
-          patients = patients.filter(patient => patient.id !== id);
-
-          localStorage.setItem('patients', JSON.stringify(patients));
-        }
-      });
-    return of();
+    return this.getPatients().pipe(
+      map((patients) => {
+        const newPatients = patients.filter(patient => patient.id !== id);
+        localStorage.setItem('patients', JSON.stringify(newPatients));
+        return;
+      }));
   }
 }
