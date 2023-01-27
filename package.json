@@ -11,7 +11,9 @@
     "dev:ssr": "ng run calculadora-hidratacao-na-dengue:serve-ssr",
     "serve:ssr": "node dist/calculadora-hidratacao-na-dengue/server/main.js",
     "build:ssr": "ng build && ng run calculadora-hidratacao-na-dengue:server",
-    "prerender": "ng run calculadora-hidratacao-na-dengue:prerender"
+    "prerender": "ng run calculadora-hidratacao-na-dengue:prerender",
+    "build-gh-pages": "ng build --base-href \"https://parseiro.github.io/calculadora-hidratacao-na-dengue/\"",
+    "deploy": "ngh --dir=dist/calculadora-hidratacao-na-dengue/browser"
   },
   "private": true,
   "dependencies": {
