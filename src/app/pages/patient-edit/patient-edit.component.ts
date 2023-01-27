@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {NgForm} from "@angular/forms";
 import {Title} from "@angular/platform-browser";
 import {IPatient} from "../../model/patient";
 import {PatientService} from "../../services/patient.service";
@@ -46,7 +45,7 @@ export class PatientEditComponent implements OnInit {
                 this.nome = patient.name;
                 this.peso = patient.weight;
               },
-              error: err => {
+              error: _ => {
                 this.activePatient = {
                   id: 0,
                   name: '',
@@ -86,7 +85,7 @@ export class PatientEditComponent implements OnInit {
             next: savedPatient => {
               this.snackBar.open(`Paciente criado ou editado: id ${savedPatient.id}`, '', {duration: 1000});
 
-              const url = `/patientList`;
+              const url = `/patientView/${savedPatient.id}`;
 
               // console.log('Indo para: ' + url);
 
